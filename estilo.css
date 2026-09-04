@@ -1,0 +1,24 @@
+.portada-imagenes {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 30px 0;
+}
+
+.portada-imagenes img {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+}
+
+.portada-imagenes a {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}
+
+.portada-imagenes a:hover img {
+    opacity: 0.8;
+}
