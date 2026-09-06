@@ -1,145 +1,35 @@
-.portada-imagenes {
+.contenedor-cards {
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin: 30px 0;
+    gap: 100px; 
+    flex-wrap: wrap; 
 }
 
-.portada-imagenes img {
-    width: 250px;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-    border-radius: 8px;
+.card {
+    width: 500px;
+    height: 500px;
+    border: 5px solid black;
+    border-radius: 10px;
+    overflow: hidden; 
 }
 
-.portada-imagenes a {
-    text-decoration: none;
-    color: black;
-    text-align: center;
-}
-
-.portada-imagenes a:hover img {
-    opacity: 0.8;
-}
-/* ===== Fuente retro para lo patrimonial ===== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500&display=swap');
-
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    transition: background-color 0.3s ease;
-}
-
-h1 {
-    font-family: 'Playfair Display', serif;
-}
-
-/* ===== TEMA NATURAL (verdes) ===== */
-.tema-natural {
-    --color-primario: #3a6b35;
-    --color-secundario: #7fa66b;
-    --color-fondo: #f2f7ee;
-    --color-texto: #223321;
-    --color-borde: #cfe3c2;
-
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-}
-
-.tema-natural h1 {
-    color: var(--color-primario);
-}
-
-/* ===== TEMA CULTURAL (retro/patrimonial) ===== */
-.tema-cultural {
-    --color-primario: #7a3b1e;
-    --color-secundario: #c9a227;
-    --color-fondo: #f6ecd9;
-    --color-texto: #3d2b1f;
-    --color-borde: #d8bd8a;
-
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-}
-
-.tema-cultural h1 {
-    color: var(--color-primario);
-    text-shadow: 1px 1px 0 var(--color-secundario);
-}
-
-/* ===== Tarjetas de imagen (portada-imagenes) — comunes a ambos temas ===== */
-.portada-imagenes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 2rem 1rem;
-}
-
-.portada-imagenes a {
-    text-decoration: none;
-    color: var(--color-texto);
-    background-color: white;
-    border: 2px solid var(--color-borde);
-    border-radius: 12px;
-    padding: 0.8rem;
-    width: 220px;
-    text-align: center;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.portada-imagenes a:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-    border-color: var(--color-primario);
-}
-
-.portada-imagenes img {
+.card img {
     width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
+    height: 300px;
+    object-fit: cover; 
+    display: block;    
 }
 
-.portada-imagenes p {
-    font-weight: 500;
-    margin: 0;
-    color: var(--color-primario);
+.card-natural .card-body {
+    text-align: center;
+    background-color: #D8FACF;
 }
 
-/* ===== Navegación inferior (Inicio | Volver) ===== */
-ul[style*="list-style:none"] li a,
-ul[style*="list-style: none"] li a {
-    color: var(--color-primario);
-    font-weight: 500;
+.card-cultural .card-body {
+    text-align: center;
+    background-color: #FAF6CF;
+}
+
+.btn-custom {
     text-decoration: none;
-}
-
-ul[style*="list-style:none"] li a:hover {
-    text-decoration: underline;
-}
-/* ===== TEMA NATURAL — pisa las variables de Bootstrap ===== */
-.tema-natural {
-    --bs-primary: #3a6b35;
-    --bs-primary-rgb: 58, 107, 53;
-    --bs-link-color: #3a6b35;
-    --bs-link-hover-color: #2a4d26;
-    --bs-body-bg: #f2f7ee;
-    --bs-body-color: #223321;
-}
-
-/* ===== TEMA CULTURAL — pisa las variables de Bootstrap ===== */
-.tema-cultural {
-    --bs-primary: #7a3b1e;
-    --bs-primary-rgb: 122, 59, 30;
-    --bs-link-color: #7a3b1e;
-    --bs-link-hover-color: #c9a227; /* dorado vintage al hacer hover */
-    --bs-body-bg: #f6ecd9;
-    --bs-body-color: #3d2b1f;
-}
-.portada-imagenes img {
-    border: 3px solid var(--bs-primary);
 }
