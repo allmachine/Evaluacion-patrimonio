@@ -1,18 +1,123 @@
-<body class="tema-natural">
-    <h1 style="color:maroon;text-align:center">Saltos del Petrohué</h1>
+<!DOCTYPE html>
+<html lang="es">
 
-    <div style="display:flex; justify-content:flex-start; align-items:flex-start; gap:2rem; max-width:700px; margin:0 auto;">
-        <img src="../img/saltos-del-petrohue.jpg" alt="Saltos del Petrohué" style="width:300px;border-radius:8px;">
-        <ul style="list-style:none; text-align:left; padding:0;">
-            <li><strong>Región:</strong> Los Lagos</li><br>
-            <li><strong>Comuna:</strong> Puerto Varas</li><br>
-            <li><strong>Tipo:</strong> Geositio / cascada dentro de Parque Nacional</li><br>
-            <li><strong>Declaración:</strong> Geositio Nacional (SERNAGEOMIN)</li><br>
-            <li><strong>Estado:</strong> Protegido, dentro del Parque Nacional Vicente Pérez Rosales</li><br>
-        </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Saltos del Petrohué</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body class="tema-natural">
+
+    <h1 style="color:maroon; text-align:center; margin:30px;">
+        Saltos del Petrohué
+    </h1>
+
+
+    <!-- CARRUSEL -->
+    <div id="carruselSaltosPetrohue"
+         class="carousel slide"
+         data-bs-ride="carousel"
+         style="max-width:700px; margin:0 auto;">
+
+        <div class="carousel-inner">
+
+            <!-- Imagen 1 -->
+            <div class="carousel-item active">
+                <img src="../img/saltos-del-petrohue.jpg"
+                     class="d-block w-100"
+                     alt="Saltos del Petrohué"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+            <!-- Imagen 2 -->
+            <div class="carousel-item">
+                <img src="../img/saltos-petrohue-2.avif"
+                     class="d-block w-100"
+                     alt="Saltos del Petrohué"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+            <!-- Imagen 3 -->
+            <div class="carousel-item">
+                <img src="../img/salto.petrohue-3.avif"
+                     class="d-block w-100"
+                     alt="Saltos del Petrohué"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+        </div>
+
+
+        <!-- BOTÓN ANTERIOR -->
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carruselSaltosPetrohue"
+                data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+
+        </button>
+
+
+        <!-- BOTÓN SIGUIENTE -->
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carruselSaltosPetrohue"
+                data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+
+        </button>
+
     </div>
 
+
+    <!-- INFORMACIÓN -->
+    <div style="max-width:700px; margin:30px auto;">
+
+        <ul style="list-style:none; text-align:left; padding:0;">
+
+            <li><strong>Región:</strong> Los Lagos</li>
+            <br>
+
+            <li><strong>Comuna:</strong> Puerto Varas</li>
+            <br>
+
+            <li><strong>Tipo:</strong> Geositio / cascada dentro de Parque Nacional</li>
+            <br>
+
+            <li><strong>Declaración:</strong> Geositio Nacional (SERNAGEOMIN)</li>
+            <br>
+
+            <li><strong>Estado:</strong> Protegido, dentro del Parque Nacional Vicente Pérez Rosales</li>
+            <br>
+
+        </ul>
+
+    </div>
+
+
+    <!-- NAVEGACIÓN -->
     <ul style="list-style:none; text-align:center;">
-        <li><a href="../index.html">Inicio</a> | <a href="carpeta-natural.html">Volver</a></li>
+
+        <li>
+            <a href="../index.html">Inicio</a>
+            |
+            <a href="carpeta-natural.html">Volver</a>
+        </li>
+
     </ul>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
+</html>

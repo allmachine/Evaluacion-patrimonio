@@ -1,19 +1,117 @@
-<body class="tema-natural">
-    <h1 style="color:maroon;text-align:center">Volcán Osorno</h1>
+<!DOCTYPE html>
+<html lang="es">
 
-    <div style="display:flex; justify-content:flex-start; align-items:flex-start; gap:2rem; max-width:700px; margin:0 auto;">
-        <img src="../img/volcan-osorno.jpg" alt="Volcán Osorno" style="width:300px;border-radius:8px;">
-        <ul style="list-style:none; text-align:left; padding:0;">
-            <li><strong>Región:</strong> Los Lagos</li><br>
-            <li><strong>Comuna:</strong> Puerto Varas / Puerto Octay</li><br>
-            <li><strong>Tipo:</strong> Monumento natural / volcán activo</li><br>
-            <li><strong>Declaración:</strong> 1926 (Parque Nacional Vicente Pérez Rosales)</li><br>
-            <li><strong>Estado:</strong> Protegido</li>
-        </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Volcán Osorno</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body class="tema-natural">
+
+    <h1 style="color:maroon; text-align:center; margin:30px;">
+        Volcán Osorno
+    </h1>
+
+    <!-- CARRUSEL -->
+    <div id="carruselVolcanOsorno"
+         class="carousel slide"
+         data-bs-ride="carousel"
+         style="max-width:700px; margin:0 auto;">
+
+        <div class="carousel-inner">
+
+            <!-- Imagen 1 -->
+            <div class="carousel-item active">
+                <img src="../img/volcan-osorno.jpg"
+                     class="d-block w-100"
+                     alt="Volcán Osorno"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+            <!-- Imagen 2 -->
+            <div class="carousel-item">
+                <img src="../img/volcan-osorno-2.avif"
+                     class="d-block w-100"
+                     alt="Volcán Osorno"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+            <!-- Imagen 3 -->
+            <div class="carousel-item">
+                <img src="../img/volcan-osorno-3.avif"
+                     class="d-block w-100"
+                     alt="Volcán Osorno"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+        </div>
+
+        <!-- BOTÓN ANTERIOR -->
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carruselVolcanOsorno"
+                data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+
+        </button>
+
+        <!-- BOTÓN SIGUIENTE -->
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carruselVolcanOsorno"
+                data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+
+        </button>
+
     </div>
 
+    <!-- INFORMACIÓN -->
+    <div style="max-width:700px; margin:30px auto;">
+
+        <ul style="list-style:none; text-align:left; padding:0;">
+
+            <li><strong>Región:</strong> Los Lagos</li>
+            <br>
+
+            <li><strong>Comuna:</strong> Puerto Varas / Puerto Octay</li>
+            <br>
+
+            <li><strong>Tipo:</strong> Monumento natural / volcán activo</li>
+            <br>
+
+            <li><strong>Declaración:</strong> 1926 (Parque Nacional Vicente Pérez Rosales)</li>
+            <br>
+
+            <li><strong>Estado:</strong> Protegido</li>
+            <br>
+
+        </ul>
+
+    </div>
+
+    <!-- NAVEGACIÓN -->
     <ul style="list-style:none; text-align:center;">
-        <li><a href="../index.html">Inicio</a> | <a href="carpeta-natural.html">Volver</a></li>
+
+        <li>
+            <a href="../index.html">Inicio</a>
+            |
+            <a href="carpeta-natural.html">Volver</a>
+        </li>
+
     </ul>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

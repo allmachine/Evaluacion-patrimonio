@@ -1,18 +1,123 @@
-<body class="tema-natural">
-    <h1 style="color:maroon;text-align:center">Parque Nacional Alerce Andino</h1>
+<!DOCTYPE html>
+<html lang="es">
 
-    <div style="display:flex; justify-content:flex-start; align-items:flex-start; gap:2rem; max-width:700px; margin:0 auto;">
-        <img src="../img/parque-alerce-andino.jpg" alt="Parque Nacional Alerce Andino" style="width:300px;border-radius:8px;">
-        <ul style="list-style:none; text-align:left; padding:0;">
-            <li><strong>Región:</strong> Los Lagos</li><br>
-            <li><strong>Comuna:</strong> Puerto Montt</li><br>
-            <li><strong>Tipo:</strong> Parque nacional</li><br>
-            <li><strong>Declaración:</strong> 1982</li><br>
-            <li><strong>Estado:</strong> Protegido (CONAF)</li><br>
-        </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Parque Nacional Alerce Andino</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body class="tema-natural">
+
+    <h1 style="color:maroon; text-align:center; margin:30px;">
+        Parque Nacional Alerce Andino
+    </h1>
+
+
+    <!-- CARRUSEL -->
+    <div id="carruselAlerceAndino"
+         class="carousel slide"
+         data-bs-ride="carousel"
+         style="max-width:700px; margin:0 auto;">
+
+        <div class="carousel-inner">
+
+            <!-- Imagen 1 -->
+            <div class="carousel-item active">
+                <img src="../img/parque-alerce-andino.jpg"
+                     class="d-block w-100"
+                     alt="Parque Nacional Alerce Andino"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+            <!-- Imagen 2 -->
+            <div class="carousel-item">
+                <img src="../img/parque-alerce-andino2.avif"
+                     class="d-block w-100"
+                     alt="Parque Nacional Alerce Andino"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+            <!-- Imagen 3 -->
+            <div class="carousel-item">
+                <img src="../img/parque-alerce-andino3.avif"
+                     class="d-block w-100"
+                     alt="Parque Nacional Alerce Andino"
+                     style="height:400px; object-fit:cover;">
+            </div>
+
+        </div>
+
+
+        <!-- BOTÓN ANTERIOR -->
+        <button class="carousel-control-prev"
+                type="button"
+                data-bs-target="#carruselAlerceAndino"
+                data-bs-slide="prev">
+
+            <span class="carousel-control-prev-icon"></span>
+
+        </button>
+
+
+        <!-- BOTÓN SIGUIENTE -->
+        <button class="carousel-control-next"
+                type="button"
+                data-bs-target="#carruselAlerceAndino"
+                data-bs-slide="next">
+
+            <span class="carousel-control-next-icon"></span>
+
+        </button>
+
     </div>
 
+
+    <!-- INFORMACIÓN -->
+    <div style="max-width:700px; margin:30px auto;">
+
+        <ul style="list-style:none; text-align:left; padding:0;">
+
+            <li><strong>Región:</strong> Los Lagos</li>
+            <br>
+
+            <li><strong>Comuna:</strong> Puerto Montt</li>
+            <br>
+
+            <li><strong>Tipo:</strong> Parque nacional</li>
+            <br>
+
+            <li><strong>Declaración:</strong> 1982</li>
+            <br>
+
+            <li><strong>Estado:</strong> Protegido (CONAF)</li>
+            <br>
+
+        </ul>
+
+    </div>
+
+
+    <!-- NAVEGACIÓN -->
     <ul style="list-style:none; text-align:center;">
-        <li><a href="../index.html">Inicio</a> | <a href="carpeta-natural.html">Volver</a></li>
+
+        <li>
+            <a href="../index.html">Inicio</a>
+            |
+            <a href="carpeta-natural.html">Volver</a>
+        </li>
+
     </ul>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
+</html>
