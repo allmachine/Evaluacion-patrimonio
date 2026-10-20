@@ -9,6 +9,7 @@
 <body class="F-F">
 
 <div>
+    <div>
     <div class="Tarjetas">
         <h1 class="F-T">Datos personales</h1>
         <form method="get" class="campos">
@@ -56,50 +57,61 @@
             </div>
         </form>
     </div>
+
     <div class="Tarjetas">
-    <h1 class="F-T">Información académica</h1>
-
-    <form method="get" class="campos">
-
-        <div class="campo">
-            <label style="padding-bottom: 10px;">Nivel educacional:</label>
-
-            <div class="L-O">
-                <label><input type="radio" name="estudios" value="media" required> Enseñanza media</label>
-                <label><input type="radio" name="estudios" value="tecnico"> Técnico</label>
-                <label><input type="radio" name="estudios" value="universitario"> Universitario</label>
-                <label><input type="radio" name="estudios" value="otro"> Otro</label>
-            </div>
-        </div>
-
+        <h1 class="F-T">Información académica</h1>
+            <form method="get" class="campos">
+                <div class="campo">
+                <label style="padding-bottom: 10px;">Nivel educacional:</label>
+                    <div class="L-O">
+                        <label><input type="radio" name="estudios" value="media" required> Enseñanza media</label>
+                        <label><input type="radio" name="estudios" value="tecnico"> Técnico</label>
+                        <label><input type="radio" name="estudios" value="universitario"> Universitario</label>
+                        <label><input type="radio" name="estudios" value="otro"> Otro</label>
+                    </div>
+                </div>
         <div class="campo">
             <label for="Carrera-int">Carrera de interés:</label>
-
-            <select id="Carrera-int" name="Carrera-int" required>
-                <option value="">Seleccione</option>
-                <option value="informatica">Informática</option>
-                <option value="enfermeria">Enfermería</option>
-                <option value="administracion">Administración de empresas</option>
-            </select>
+                <select id="Carrera-int" name="Carrera-int" required>
+                    <option value="">Seleccione</option>
+                    <option value="informatica">Informática</option>
+                    <option value="enfermeria">Enfermería</option>
+                    <option value="administracion">Administración de empresas</option>
+                </select>
         </div>
-
-    </form>
+            </form>
     </div>
+
     <div class="Tarjetas">
         <h1 class="F-T">Areas de interés</h1>
+        <form>
         <div class="lista-opciones-grid">
-        <label><input type="checkbox" name="area" value="tecnologia"> Tecnología</label>
-        <label><input type="checkbox" name="area" value="administracion"> Administración</label>
-        <label><input type="checkbox" name="area" value="salud"> Salud</label>
-        <label><input type="checkbox" name="area" value="diseno"> Diseño</label>
-        <label><input type="checkbox" name="area" value="educacion"> Educación</label>
-        <label><input type="checkbox" name="area" value="otra"> Otra</label>
+            <label><input type="checkbox" name="area" value="tecnologia"> Tecnología</label>
+            <label><input type="checkbox" name="area" value="administracion"> Administración</label>
+            <label><input type="checkbox" name="area" value="salud"> Salud</label>
+            <label><input type="checkbox" name="area" value="diseno"> Diseño</label>
+            <label><input type="checkbox" name="area" value="educacion"> Educación</label>
+            <label><input type="checkbox" name="area" value="otra"> Otra</label>
+        </div>
+        </form>
     </div>
 
-
+    <div class="Tarjetas">
+        <h1 class="F-T">Adjuntar currículum</h1>
+            <div class="campo-archivo" style="text-align: center;">
+                <input type="file" id="curriculum" name="curriculum" accept=".pdf, .doc, .docx"><br>
+                <p>Formatos permitidos: PDF, DOC, DOCX (Tamaño máximo: 5 MB)</p>  
+            </div>
     </div>
-</div> 
+    </div>
+
+    <div class="contenedor-botones">
+    <button type="submit" class="btn-enviar">Enviar formulario</button>
+    <button type="reset" class="btn-limpiar">Limpiar</button>
+    </div>
+
 
     
+</div> 
 </body>
 </html>
