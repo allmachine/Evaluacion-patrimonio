@@ -33,3 +33,48 @@
 .btn-custom {
     text-decoration: none;
 }
+
+
+        .F-F{
+            background: rgb(111, 39, 39) !important;
+
+        }
+    .D-P{
+        width: 80vw; 
+        height: 280px;
+        border: 5px solid rgb(175, 175, 175);
+        border-radius: 10px;
+        margin: auto;
+        background-color: #fff;
+        text-align: center;
+    }
+
+    .D-P-T {
+        text-align: left;
+        color: rgb(106, 151, 214);
+        margin-left: 20px;
+    }
+
+    .campos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    }
+
+    .campo input {
+        width: 50%;
+        margin: 15px;
+        margin: auto;
+        display: flex;
+        box-sizing: border-box;
+        padding: 3px;
+    }
+
+    .campo input,
+    .campo select {
+    width: 50%;
+    margin: auto;
+    display: block;
+    box-sizing: border-box;
+    padding: 3px;
+    }
