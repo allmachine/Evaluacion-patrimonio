@@ -9,35 +9,29 @@
 <body class="F-F">
 
 <div>
-    <div class="D-P">
-        <h1 class="D-P-T">Datos personales</h1>
-
+    <div class="Tarjetas">
+        <h1 class="F-T">Datos personales</h1>
         <form method="get" class="campos">
             <div class="campo">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
             </div>
-
             <div class="campo">
                 <label for="apellido">Apellido:</label>
                 <input type="text" id="apellido" name="apellido" placeholder="Apellido" required>
             </div>
-
             <div class="campo">
                 <label for="email">Correo electrónico:</label>
                 <input type="text" id="email" name="email" placeholder="ejemplo@gmail.com" required>
             </div>
-
             <div class="campo">
                 <label for="telefono">Telefono:</label>
                 <input type="text" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required>
             </div>
-
             <div class="campo">
                 <label for="fecha">Fecha de nacimiento:</label>
                 <input type="date" id="fecha" name="fecha" required>
             </div>
-
             <div class="campo">
                 <label for="Region">Region:</label>
                 <select id="Region" name="Region" required>
@@ -59,12 +53,44 @@
                     <option value="aysen">Región de Aysén del General Carlos Ibáñez del Campo</option>
                     <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
                 </select>
-
             </div>
         </form>
     </div>
+    <div class="Tarjetas">
+    <h1 class="F-T">Información académica</h1>
+
+    <form method="get" class="campos">
+
+        <div class="campo">
+            <label style="padding-bottom: 10px;">Nivel educacional:</label>
+
+            <div class="L-O">
+                <label><input type="radio" name="estudios" value="media" required> Enseñanza media</label>
+                <label><input type="radio" name="estudios" value="tecnico"> Técnico</label>
+                <label><input type="radio" name="estudios" value="universitario"> Universitario</label>
+                <label><input type="radio" name="estudios" value="otro"> Otro</label>
+            </div>
+        </div>
+
+        <div class="campo">
+            <label for="Carrera-int">Carrera de interés:</label>
+
+            <select id="Carrera-int" name="Carrera-int" required>
+                <option value="">Seleccione</option>
+                <option value="informatica">Informática</option>
+                <option value="enfermeria">Enfermería</option>
+                <option value="administracion">Administración de empresas</option>
+            </select>
+        </div>
+
+    </form>
+    </div>
+    <div class="Tarjetas">
+        <h1 class="F-T">Areas de interés</h1>
 
 
+
+    </div>
 </div> 
 
     
