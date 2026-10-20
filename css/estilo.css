@@ -35,21 +35,26 @@
 }
 
 
-        .F-F{
-            background: rgb(111, 39, 39) !important;
-
+    .F-F{
+        background-image: url("../img/paisaje1.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         }
-    .D-P{
+
+        .Tarjetas{
         width: 80vw; 
         height: 280px;
         border: 5px solid rgb(175, 175, 175);
         border-radius: 10px;
         margin: auto;
-        background-color: #fff;
+        background-color: #fffd;
         text-align: center;
+        margin-bottom: 20px;
     }
 
-    .D-P-T {
+    .F-T {
         text-align: left;
         color: rgb(106, 151, 214);
         margin-left: 20px;
@@ -59,6 +64,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
+    align-items: start;
     }
 
     .campo input {
@@ -70,7 +76,6 @@
         padding: 3px;
     }
 
-    .campo input,
     .campo select {
     width: 50%;
     margin: auto;
@@ -78,3 +83,16 @@
     box-sizing: border-box;
     padding: 3px;
     }
+    
+    .L-O{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    }
+
+    .L-O input[type="radio"] {
+    width: auto;
+    margin: 0;
+    display: inline-block;
+}
+
