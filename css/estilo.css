@@ -96,3 +96,17 @@
     display: inline-block;
 }
 
+.lista-opciones-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 15px;
+}
+
+.lista-opciones-grid label {
+    margin-left: 15px;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
