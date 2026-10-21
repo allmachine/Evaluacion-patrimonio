@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     $.validator.addMethod("correoPermitido", function (value, element) {
         return this.optional(element) || /^[^\s@]+@(gmail|outlook)\.com$/i.test(value);
-    }, "El correo debe terminar en @gmail.com o @outlook.com.");
+    }, "Utilize un dominio valido como @gmail.com o @outlook.com.");
 
     $.validator.addMethod("telefonoValido", function (value, element) {
         let limpio = value.replace(/[\s+]/g, "");
@@ -65,7 +65,7 @@ $(document).ready(function () {
             "Carrera-int": "Selecciona una carrera."
         },
         submitHandler: function (form) {
-            alert("Datos validados correctamente.");
+            alert("Datos han sido validados correctamente.");
             form.submit();
         }
     });
