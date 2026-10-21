@@ -139,3 +139,11 @@
             justify-content: center;
             gap: 10px;
         }
+        label.error {
+    color: red;
+    font-size: 14px;
+    display: block;
+}
+input.error, select.error {
+    border: 1px solid red;
+}
