@@ -52,7 +52,6 @@ $(document).ready(function () {
             area: { required: true },
             curriculum: { maxTamano: 5 }
         },
-        },
         messages: {
             nombre: {
                 required: "El nombre no puede estar vacío.",
