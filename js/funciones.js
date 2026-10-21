@@ -49,7 +49,9 @@ $(document).ready(function () {
             Region: { required: true },
             estudios: { required: true },
             "Carrera-int": { required: true },
+            area: { required: true },
             curriculum: { maxTamano: 5 }
+        },
         },
         messages: {
             nombre: {
@@ -63,6 +65,7 @@ $(document).ready(function () {
             estudios: "Selecciona tu nivel educacional.",
             Region: "Selecciona una región.",
             "Carrera-int": "Selecciona una carrera."
+            area: "Selecciona al menos un área de interés."
         },
         submitHandler: function (form) {
             alert("Datos han sido validados correctamente.");
