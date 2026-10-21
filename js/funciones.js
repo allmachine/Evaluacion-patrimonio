@@ -63,8 +63,8 @@ $(document).ready(function () {
             },
             estudios: "Selecciona tu nivel educacional.",
             Region: "Selecciona una región.",
-            "Carrera-int": "Selecciona una carrera."
-            area: "Selecciona al menos un área de interés."
+            "Carrera-int": "Selecciona una carrera.",
+            area: "Selecciona al menos un área de interés.",
         },
         submitHandler: function (form) {
             alert("Datos han sido validados correctamente.");
