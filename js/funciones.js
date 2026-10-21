@@ -66,6 +66,15 @@ $(document).ready(function () {
             "Carrera-int": "Selecciona una carrera.",
             area: "Selecciona al menos un área de interés.",
         },
+           errorPlacement: function (error, element) {
+            if (element.attr("type") === "radio") {
+                error.insertAfter(element.closest(".L-O"));
+            } else if (element.attr("type") === "checkbox") {
+                error.insertAfter(element.closest(".lista-opciones-grid"));
+            } else {
+                error.insertAfter(element);
+            }
+        },
         submitHandler: function (form) {
             alert("Datos han sido validados correctamente.");
             form.submit();
