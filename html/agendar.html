@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estilo.css">
+    <title>Agendar visita</title>
+
+    <!-- Solo estilos de lo nuevo (lista de visitas y mensajes de error).
+         Lo demás sale de tu estilo.css. Ajusta los colores a tu paleta. -->
+    <style>
+        label.error {
+            display: block;
+            margin-top: 4px;
+            font-size: 0.85rem;
+            color: #c0392b;
+        }
+        input.error, select.error {
+            border-color: #c0392b;
+        }
+
+        #listaVisitas { display: grid; gap: 12px; }
+
+        .visita {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 14px 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .visita h2 { margin: 0 0 4px; font-size: 1.15rem; }
+        .visita p { margin: 0; }
+
+        .visita-acciones { display: flex; gap: 8px; }
+        .visita-acciones button { padding: 8px 14px; cursor: pointer; }
+        .vacio { text-align: center; }
+    </style>
+</head>
+<body class="F-F">
+
+    <header>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p style="padding-left: 50px; font-size: 25px;">Agendar visita</p>
+            <div style="display: flex; gap: 20px; padding-right: 50px;">
+                <a href="../index.html">Inicio</a>
+            </div>
+        </div>
+    </header>
+
+    <div>
+        <form id="formVisita" method="get" novalidate>
+            <div class="Tarjetas">
+                <h1 class="F-T">Datos personales</h1>
+                <div class="campos">
+                    <div class="campo">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre" required minlength="3" maxlength="30">
+                    </div>
+                    <div class="campo">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" name="apellido" placeholder="Apellido" required minlength="3" maxlength="30">
+                    </div>
+                    <div class="campo">
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" placeholder="ejemplo@gmail.com" required>
+                    </div>
+                    <div class="campo">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="text" id="telefono" name="telefono" placeholder="+56 9 1234 5678" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Tarjetas">
+                <h1 class="F-T" id="tituloVisita">Datos de la visita</h1>
+                <div class="campos">
+                    <div class="campo">
+                        <label for="lugar">Lugar:</label>
+                        <select id="lugar" name="lugar" required>
+                            <option value="">Seleccione</option>
+                            <option value="Parque Alerce">Parque Alerce</option>
+                            <option value="Tenglo">Tenglo</option>
+                            <option value="Pelluco">Pelluco</option>
+                            <!-- agrega aquí tus otros lugares patrimoniales -->
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                    <div class="campo">
+                        <label for="hora">Horario:</label>
+                        <select id="hora" name="hora" required>
+                            <option value="">Seleccione</option>
+                            <option value="09:00">1. 09:00</option>
+                            <option value="10:00">2. 10:00</option>
+                            <option value="11:00">3. 11:00</option>
+                            <option value="12:00">4. 12:00</option>
+                            <option value="14:00">5. 14:00</option>
+                            <option value="15:00">6. 15:00</option>
+                            <option value="16:00">7. 16:00</option>
+                            <option value="17:00">8. 17:00</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="personas">Cantidad de personas:</label>
+                        <input type="number" id="personas" name="personas" placeholder="1" required min="1" max="50">
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor-botones">
+                <button type="submit" class="btn-enviar" id="btnGuardar">Agendar visita</button>
+                <button type="reset" class="btn-limpiar">Limpiar</button>
+            </div>
+        </form>
+
+        <div class="Tarjetas">
+            <h1 class="F-T">Visitas agendadas</h1>
+            <div id="listaVisitas"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/localization/messages_es.min.js"></script>
+    <script>
+        $(function () {
+            const CLAVE = 'visitas';
+            const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+            const $form = $('#formVisita');
+            const $lista = $('#listaVisitas');
+            let idEditando = null; // null = creando, con número = editando esa visita
+
+            // ---------- Almacenamiento ----------
+            function obtenerVisitas() {
+                try {
+                    return JSON.parse(localStorage.getItem(CLAVE)) || [];
+                } catch (error) {
+                    console.error('No se pudieron leer las visitas:', error);
+                    return [];
+                }
+            }
+
+            function guardarVisitas(visitas) {
+                localStorage.setItem(CLAVE, JSON.stringify(visitas));
+            }
+
+            // ---------- Utilidades ----------
+            function fechaDeHoy() {
+                const d = new Date();
+                d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+                return d.toISOString().split('T')[0];
+            }
+
+            function escapar(texto) {
+                const div = document.createElement('div');
+                div.textContent = String(texto ?? '');
+                return div.innerHTML;
+            }
+
+            function formatearFecha(fecha) {
+                const [anio, mes, dia] = fecha.split('-');
+                return Number(dia) + ' ' + MESES[Number(mes) - 1] + ' ' + anio;
+            }
+
+            $('#fecha').attr('min', fechaDeHoy()); // el calendario no deja elegir días pasados
+
+            // ---------- Validaciones (jQuery Validate) ----------
+            $.validator.addMethod('telefonoChile', function (valor, elemento) {
+                return this.optional(elemento) || /^(\+?56)?\s?9\s?\d{4}\s?\d{4}$/.test(valor.trim());
+            }, 'Ingresa un celular chileno, por ejemplo +56 9 1234 5678.');
+
+            $.validator.addMethod('fechaFutura', function (valor, elemento) {
+                return this.optional(elemento) || valor >= fechaDeHoy();
+            }, 'La fecha no puede estar en el pasado.');
+
+            const validador = $form.validate({
+                rules: {
+                    nombre:   { required: true, minlength: 3, maxlength: 30 },
+                    apellido: { required: true, minlength: 3, maxlength: 30 },
+                    email:    { required: true, email: true },
+                    telefono: { required: true, telefonoChile: true },
+                    lugar:    { required: true },
+                    fecha:    { required: true, fechaFutura: true },
+                    hora:     { required: true },
+                    personas: { required: true, digits: true, min: 1, max: 50 }
+                },
+                // Solo se ejecuta si TODO el formulario es válido
+                submitHandler: function () {
+                    const datos = {
+                        nombre: $('#nombre').val().trim(),
+                        apellido: $('#apellido').val().trim(),
+                        email: $('#email').val().trim().toLowerCase(),
+                        telefono: $('#telefono').val().trim(),
+                        lugar: $('#lugar').val(),
+                        fecha: $('#fecha').val(),
+                        hora: $('#hora').val(),
+                        personas: parseInt($('#personas').val(), 10)
+                    };
+
+                    const visitas = obtenerVisitas();
+
+                    // Evita duplicados (mismo lugar, fecha y hora), ignorando la que se está editando
+                    const duplicada = visitas.some(v =>
+                        v.id !== idEditando &&
+                        v.lugar === datos.lugar && v.fecha === datos.fecha && v.hora === datos.hora
+                    );
+                    if (duplicada) {
+                        alert('Ya hay una visita agendada en ese lugar, fecha y hora.');
+                        return;
+                    }
+
+                    if (idEditando !== null) {
+                        // UPDATE: reemplaza solo la visita con ese id
+                        guardarVisitas(visitas.map(v =>
+                            v.id === idEditando ? { ...datos, id: idEditando } : v
+                        ));
+                    } else {
+                        // CREATE
+                        visitas.push({ ...datos, id: Date.now() });
+                        guardarVisitas(visitas);
+                    }
+
+                    salirDeEdicion();
+                    mostrarVisitas();
+                }
+            });
+
+            // ---------- READ ----------
+            function mostrarVisitas() {
+                // Copia del array ordenada por fecha y hora (la próxima visita primero)
+                const visitas = obtenerVisitas().slice().sort((a, b) =>
+                    (a.fecha + a.hora).localeCompare(b.fecha + b.hora)
+                );
+                $lista.empty();
+
+                if (visitas.length === 0) {
+                    $lista.append('<p class="vacio">Aún no hay visitas agendadas. Completa el formulario para agendar la primera.</p>');
+                    return;
+                }
+
+                visitas.forEach(v => {
+                    const persona = escapar(v.nombre) + ' ' + escapar(v.apellido);
+                    const correo = escapar(v.email || v.gmail); // v.gmail: visitas guardadas con la versión anterior
+                    $lista.append(`
+                        <article class="visita">
+                            <div>
+                                <h2>${escapar(v.lugar)}</h2>
+                                <p>${escapar(formatearFecha(v.fecha))} a las ${escapar(v.hora)}, ${escapar(v.personas)} persona(s)</p>
+                                <p>${persona}, ${correo}</p>
+                            </div>
+                            <div class="visita-acciones">
+                                <button type="button" data-accion="editar" data-id="${v.id}">Reprogramar</button>
+                                <button type="button" data-accion="eliminar" data-id="${v.id}">Cancelar visita</button>
+                            </div>
+                        </article>
+                    `);
+                });
+            }
+
+            // ---------- DELETE y botón Reprogramar ----------
+            $lista.on('click', 'button[data-accion]', function () {
+                const id = Number($(this).data('id'));
+                const visitas = obtenerVisitas();
+
+                if ($(this).data('accion') === 'eliminar') {
+                    if (confirm('¿Seguro que quieres cancelar esta visita?')) {
+                        guardarVisitas(visitas.filter(v => v.id !== id));
+                        if (idEditando === id) salirDeEdicion();
+                        mostrarVisitas();
+                    }
+                    return;
+                }
+
+                // Editar: precarga el formulario con esa visita
+                const v = visitas.find(x => x.id === id);
+                if (!v) return;
+                $('#nombre').val(v.nombre);
+                $('#apellido').val(v.apellido || '');
+                $('#email').val(v.email || v.gmail || '');
+                $('#telefono').val(v.telefono || '');
+                $('#lugar').val(v.lugar);
+                $('#fecha').val(v.fecha);
+                $('#hora').val(v.hora);
+                $('#personas').val(v.personas);
+
+                idEditando = id;
+                validador.resetForm();
+                $('#tituloVisita').text('Reprogramar visita');
+                $('#btnGuardar').text('Guardar cambios');
+                $form[0].scrollIntoView({ behavior: 'smooth' });
+            });
+
+            // El botón "Limpiar" también sale del modo edición
+            $form.on('reset', function () {
+                idEditando = null;
+                validador.resetForm();
+                $('#tituloVisita').text('Datos de la visita');
+                $('#btnGuardar').text('Agendar visita');
+            });
+
+            function salirDeEdicion() {
+                $form[0].reset(); // dispara el evento 'reset' de arriba
+            }
+
+            mostrarVisitas(); // muestra lo guardado al cargar la página
+        });
+    </script>
+</body>
+</html>
