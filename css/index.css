@@ -20,3 +20,7 @@ h1:hover { transform: scale(1.03); }
 
 a { transition: 0.3s; }
 a:hover { transform: scale(1.03); }
+
+html, body {
+    overflow-x: hidden;
+}
