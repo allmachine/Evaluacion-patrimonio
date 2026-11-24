@@ -87,7 +87,7 @@
             </div>
         </form>
 
-        <div class="Tarjetas">
+        <div class="Tarjetas tarjeta-visitas">
             <h1 class="F-T">Visitas agendadas</h1>
             <div id="listaVisitas"></div>
         </div>
@@ -102,9 +102,8 @@
             const MESES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
             const $form = $('#formVisita');
             const $lista = $('#listaVisitas');
-            let idEditando = null; // null = creando, con número = editando esa visita
+            let idEditando = null; 
 
-            // ---------- Almacenamiento ----------
             function obtenerVisitas() {
                 try {
                     return JSON.parse(localStorage.getItem(CLAVE)) || [];
@@ -118,7 +117,6 @@
                 localStorage.setItem(CLAVE, JSON.stringify(visitas));
             }
 
-            // ---------- Utilidades ----------
             function fechaDeHoy() {
                 const d = new Date();
                 d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
@@ -138,14 +136,14 @@
 
             $('#fecha').attr('min', fechaDeHoy()); // el calendario no deja elegir días pasados
 
-            // ---------- Validaciones (jQuery Validate) ----------
+
             $.validator.addMethod('telefonoChile', function (valor, elemento) {
                 return this.optional(elemento) || /^(\+?56)?\s?9\s?\d{4}\s?\d{4}$/.test(valor.trim());
-            }, 'Ingresa un celular chileno, por ejemplo +56 9 1234 5678.');
+            }, 'Ingresa un número de teléfono válido, por ejemplo +56 9 1234 5678.');
 
             $.validator.addMethod('fechaFutura', function (valor, elemento) {
                 return this.optional(elemento) || valor >= fechaDeHoy();
-            }, 'La fecha no puede estar en el pasado.');
+            }, 'Porfavor ingresa una fecha futura.');
 
             const validador = $form.validate({
                 rules: {
@@ -201,7 +199,6 @@
 
             // ---------- READ ----------
             function mostrarVisitas() {
-                // Copia del array ordenada por fecha y hora (la próxima visita primero)
                 const visitas = obtenerVisitas().slice().sort((a, b) =>
                     (a.fecha + a.hora).localeCompare(b.fecha + b.hora)
                 );
@@ -231,7 +228,6 @@
                 });
             }
 
-            // ---------- DELETE y botón Reprogramar ----------
             $lista.on('click', 'button[data-accion]', function () {
                 const id = Number($(this).data('id'));
                 const visitas = obtenerVisitas();
@@ -245,7 +241,7 @@
                     return;
                 }
 
-                // Editar: precarga el formulario con esa visita
+
                 const v = visitas.find(x => x.id === id);
                 if (!v) return;
                 $('#nombre').val(v.nombre);
@@ -264,7 +260,6 @@
                 $form[0].scrollIntoView({ behavior: 'smooth' });
             });
 
-            // El botón "Limpiar" también sale del modo edición
             $form.on('reset', function () {
                 idEditando = null;
                 validador.resetForm();
@@ -273,10 +268,10 @@
             });
 
             function salirDeEdicion() {
-                $form[0].reset(); // dispara el evento 'reset' de arriba
+                $form[0].reset(); 
             }
 
-            mostrarVisitas(); // muestra lo guardado al cargar la página
+            mostrarVisitas();
         });
     </script>
 </body>
