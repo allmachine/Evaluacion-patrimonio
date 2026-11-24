@@ -19,7 +19,8 @@ $(document).ready(function () {
         return element.files[0].size <= mb * 1024 * 1024;
     }, $.validator.format("El archivo no puede superar los {0} MB."));
 
-    // ---- Validación del formulario ----
+    
+    
     $("#formulario").validate({
         rules: {
             nombre: {
